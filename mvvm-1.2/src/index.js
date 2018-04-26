@@ -4,7 +4,7 @@ var MyApp = san.defineComponent({
   template: '<p>Hello {{ text }}!</p>',
   initData: function() {
     return {
-      text: 'world'
+      text: 'world232231wwwwgggpppp'
     };
   }
 });

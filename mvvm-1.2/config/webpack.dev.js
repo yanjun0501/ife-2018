@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
@@ -17,7 +18,7 @@ const config = {
     path: path.resolve(__dirname,  '../dist'),
     filename: '[name].min.js',
     library: '[name]',
-    publicPath: './'
+    publicPath: '/'
   },
 
   module: {
@@ -110,6 +111,8 @@ const config = {
     // new HtmlWebpackPlugin({template: './index.html'}),
     new webpack.HotModuleReplacementPlugin({
     }),
+    new CleanWebpackPlugin(['dist']),
+    new webpack.NamedModulesPlugin(),
     // new UglifyJsPlugin({
     //   test: /\.js($|\?)/i,
     //   sourceMap: true
@@ -117,10 +120,12 @@ const config = {
   ],
 
   devServer: {
-    contentBase: path.join(__dirname, "../dist"),
+    contentBase: path.resolve(__dirname, "../dist"),
+    // contentBase:  'dist',
     compress: true,
     port: 9000,
     open: true,
+    hot: true,
     historyApiFallback: true,
     watchOptions: {
         ignored: /node_modules/

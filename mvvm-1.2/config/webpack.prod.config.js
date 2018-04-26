@@ -12,12 +12,35 @@ const config = {
   entry: {
     'main': './src/index.js'
   },
-
+  optimization: {
+		splitChunks: {
+			cacheGroups: {
+				commons: {
+					chunks: "initial",
+					minChunks: 3,
+				},
+				vendor: {
+					test: /node_modules[\\/](?!san)/,
+					chunks: "all",
+					name: "vendor",
+					priority: 10,
+					enforce: true
+        },
+				san: {
+					test: /[\\/]san/,
+					chunks: "all",
+					name: "san",
+					priority: 10,
+					enforce: true
+				}
+			}
+		}
+	},
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].min.js',
     library: '[name]',
-    publicPath: './'
+    publicPath: '/'
   },
 
   module: {
@@ -118,6 +141,11 @@ const config = {
     new UglifyJsPlugin({
       test: /\.js($|\?)/i,
       sourceMap: true
+    }),
+    new webpack.HashedModuleIdsPlugin({
+      hashFunction: 'sha256',
+      hashDigest: 'hex',
+      hashDigestLength: 20
     })
   ]
 };
