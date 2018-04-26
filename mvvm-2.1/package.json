@@ -1,7 +1,7 @@
 {
-  "name": "helloworld",
+  "name": "data",
   "version": "1.0.0",
-  "description": "a task of ife2018 mvvm 1-2",
+  "description": "a task of ife2018 mvvm 2-1",
   "main": "index.js",
   "repository": {
     "url": "git+git@github.com:yanjun0501/ife-2018.git",
@@ -44,6 +44,7 @@
     "html-loader": "^0.5.5"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "san-mui": "^1.1.1",
     "san-router": "^1.2.0",
     "san-store": "^1.1.0",
