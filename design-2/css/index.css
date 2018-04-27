@@ -1,0 +1,98 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+
+.box {
+    width: 677px;
+    height: 237px;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.model {
+    display: inline-block;
+    width: 60px;
+    height: 68px;
+    line-height: 68px;
+    text-align: center;
+    background: rgb(247, 246, 246);
+    font-size: 9px;
+    margin-left: 30px;
+    margin-top: 45px;
+    overflow: hidden;
+}
+.model1 {
+    display: inline-block;
+    width: 60px;
+    height: 68px;
+    line-height: 68px;
+    text-align: center;
+    background: rgb(247, 246, 246);
+    font-size: 9px;
+    margin-top: 45px;
+    margin-left: 40px;
+    transform: skew(30deg);
+    overflow: hidden;
+}
+.model2 {
+    display: inline-block;
+    width: 60px;
+    height: 68px;
+    line-height: 68px;
+    text-align: center;
+    background: rgb(247, 246, 246);
+    font-size: 9px;
+    margin-top: 45px;
+    transform: scaleX(.5);
+    margin-left: 30px;
+    overflow: hidden;
+}
+.model3 {
+    display: inline-block;
+    width: 60px;
+    height: 68px;
+    line-height: 68px;
+    text-align: center;
+    background: rgb(247, 246, 246);
+    font-size: 9px;
+    margin-top: 45px;
+    transform: rotate(45deg);
+    margin-left: 30px;
+    overflow: hidden;
+}
+.model4 {
+    display: inline-block;
+    /* position: absolute; */
+    width: 60px;
+    height: 68px;
+    line-height: 68px;
+    text-align: center;
+    background: rgb(247, 246, 246);
+    font-size: 9px;
+    margin-top: 65px;
+    margin-left: 40px;
+}
+.model5 {
+    display: inline-block;
+    /* position: absolute; */
+    width: 60px;
+    height: 68px;
+    line-height: 68px;
+    text-align: center;
+    background: rgb(247, 246, 246);
+    font-size: 9px;
+    margin-top: 65px;
+    margin-left: 40px;
+    transform: skew(30deg) scaleX(0.5) rotate(45deg);
+}
