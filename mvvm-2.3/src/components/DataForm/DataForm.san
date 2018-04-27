@@ -1,0 +1,130 @@
+<template>
+<div class="form">
+  <div class="input-form">
+    <input class="input-box" value="{= values[0] =}" placeholder="姓名(String)" />
+    <input class="input-box" on-change="changeage($event)" value="{{ values[1] | dataFormat }}" placeholder="年龄(Number)" />
+    <input class="input-box" value="{= values[2] =}" placeholder="简介(String)" />
+  </div>
+  <div class="print">
+    <span>信息：</span>
+    <div class="name">
+      <div class="label">姓名:</div>
+      <sm-text-field inputValue="{= values[0] =}"/>
+    </div>
+    <div class="name">
+      <div class="label">年龄:</div>
+      <sm-text-field inputValue="{{ values[1] | dataFormat }}"/>
+    </div>
+    <div class="name">
+      <div class="label">简介:</div>
+      <sm-text-field inputValue="{= values[2] =}"/>
+    </div>
+  </div>
+  <sm-button variants="raised danger" on-click="claen">
+    <sm-icon style="margin-right: 6px">delete</sm-icon>移除信息
+  </sm-button>
+</div>
+</template>
+
+<script>
+
+import san, {DataTypes} from 'san';
+import {Button, TextField, Icon} from 'san-mui';
+import 'san-mui/lib/index.css';
+
+let AddCategoryDialog = san.defineComponent({
+    template: '<div></div>',
+
+    components: {
+
+    },
+
+    initData() {
+      return {
+      };
+    },
+});
+
+export default {
+
+  components: {
+      'sm-text-field': TextField,
+      'sm-button': Button,
+      'sm-icon': Icon
+  },
+  initData() {
+    return {
+      values: [
+        '',
+        0,
+        ''
+      ]
+
+    };
+  },
+  dataTypes: {
+    namevalue: DataTypes.string,
+    agevalue: DataTypes.number,
+    detailvalue: DataTypes.string
+  },
+  filters: {
+    dataFormat: function (value) {
+      if ( value === 0) {
+        return ''
+      }
+      else 
+        return value
+    }
+  },
+  claen() {
+    this.data.apply('values', function () {
+      return ['', 0, '']
+    })
+  },
+  changeage(e) {
+    this.data.splice('values', [1, 1, e.target.value]);
+  },
+  computed: {
+    todo() {
+
+      return {
+
+      };
+    },
+  },
+  created() {
+    // let id = this.data.get('route.query.id');
+    // if (id) {
+    //     this.data.set('id', +id);
+    // }
+
+    // this.updateCategories();
+  },
+
+  disposed() {
+  }
+}
+
+</script>
+
+<style>
+.form {
+  width: 800px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+
+}
+.input-form {
+  width: 800px;
+  height: 100px;
+}
+.input-box {
+  width: 200px;
+  height: 40px;
+}
+.print {
+  width: 600px;
+  height: 300px;
+}
+</style>
