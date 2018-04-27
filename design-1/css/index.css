@@ -33,15 +33,23 @@ body, html {
     height: 2px;
     margin-bottom: 45px;
     background: #4199ee;
-
+    -webkit-transition: all 1s ease-in-out .2s;
+    -moz-transition: all 1s ease-in-out .2s;
+    -o-transition: all 1s ease-in-out .2s;
     transition: all 1s ease-in-out .2s;
 }
 .trans {
     width: 70px;
+    -webkit-transition: all .6s ease-in-out .2s;
+    -moz-transition: all .6s ease-in-out .2s;
+    -o-transition: all .6s ease-in-out .2s;
     transition: all .6s ease-in-out .2s;
 }
 .title {
     color: #4199ee;
+    -webkit-transition: all .6s ease-in-out .2s;
+    -moz-transition: all .6s ease-in-out .2s;
+    -o-transition: all .6s ease-in-out .2s;
     transition: all .6s ease-in-out .2s;
 }
 
