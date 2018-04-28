@@ -97,6 +97,14 @@ body, html {
     right: 0;
     transition: all .6s ease-in
 }
+.face:hover .mouth-wrap .left {
+    border-radius: 0% 40% 50% 50%;
+    transition: all .6s ease-in
+}
+.face:hover .mouth-wrap .right {
+    border-radius: 40% 0% 50% 50%;
+    transition: all .6s ease-in
+}
 .eye-circle {
     width: 100px;
     height: 80px;
@@ -118,6 +126,10 @@ body, html {
     margin-left: -23px;
     transition: all .6s ease-in
 }
+.face:hover .eye-core {
+    transform: scaleX(.8);
+    transition: all .6s ease-in
+}
 .eye-bottom {
     height: 50px;
     width: 100px;
@@ -126,6 +138,10 @@ body, html {
     margin-top: 48px;
     border-top: 2px solid #46240b;
     background: #f6f7f2;
+    transition: all .6s ease-in
+}
+.face:hover .eye-bottom{
+    transform: translate(0, -20px);
     transition: all .6s ease-in
 }
 .face-red {
@@ -139,6 +155,10 @@ body, html {
     border-radius: 50% 50% 50% 50%;
     background: #e85a5e;
     opacity: 0.0;
+    transition: all .6s ease-in
+}
+.face:hover .face-red{
+    opacity: .6;
     transition: all .6s ease-in
 }
 .ear-wrap {
@@ -163,6 +183,14 @@ body, html {
     right: 0;
     border-radius: 10% 100% 0% 50%;
     background: #f1ac2b;
+    transition: all .6s ease-in
+}
+.face:hover + .ear-wrap .left {
+    transform: rotate(-30deg);
+    transition: all .6s ease-in
+}
+.face:hover + .ear-wrap .right {
+    transform: rotate(30deg);
     transition: all .6s ease-in
 }
 .translate-top {
