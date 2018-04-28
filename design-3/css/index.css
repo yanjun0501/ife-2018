@@ -1,0 +1,203 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    background: #d69a44;
+}
+
+.face {
+    position: absolute;
+    left: 50%;
+    margin-left: -175px;
+    top: 40px;
+    width: 350px;
+    height: 250px;
+    border-radius: 50% 50% 30% 30%;
+    border: 2px solid #3f200b;
+    z-index: 10;
+    background: #fbf8f1;
+    overflow: hidden;
+}
+.hair {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    left: 50%;
+    margin-left: 50px;
+    margin-top: -40px;
+    background: #f3b32e;
+    border-radius: 50% 50% 50% 50%;
+}
+.eye {
+    position: absolute;
+    width: 280px;
+    height: 70px;
+    top: 90px;
+    left: 50%;
+    margin-left: -140px;
+    overflow: hidden;
+}
+.eye-left {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    transition: all .6s ease-in
+}
+.eye-right {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    left: auto;
+    right: 0px;
+    transition: all .6s ease-in
+}
+.nose {
+    width: 20px;
+    height: 10px;
+    border-bottom: 8px solid #000;
+    border-radius: 0% 0% 50% 50%;
+    top: 154px;
+    left: 50%;
+    margin-left: -10px;
+    position: absolute;
+}
+.mouth-wrap {
+    position: absolute;
+    top: 168px;
+    width: 80px;
+    left: 50%;
+    margin-left: -40px;
+    height: 20px;
+    overflow: hidden;
+}
+.mouth {
+    width: 40px;
+    height: 40px;
+    border-bottom: 4px solid #000;
+    border-right: 4px solid #000;
+    border-radius: 0% 40% 50% 20%;
+    margin-top: -26px;
+    position: absolute;
+    left: 0;
+    transition: all .6s ease-in
+}
+.mouth-wrap .right {
+    border-bottom: 4px solid #000;
+    border-right: none;
+    border-left: 4px solid #000;
+    border-radius: 40% 0% 20% 50%;
+    position: absolute;
+    left: auto;
+    right: 0;
+    transition: all .6s ease-in
+}
+.eye-circle {
+    width: 100px;
+    height: 80px;
+    border: 2px solid #482507;
+    overflow: hidden;
+    position: absolute;
+    background: #fff;
+    border-radius: 50% 50% 40% 40%;
+    box-sizing: border-box;
+}
+.eye-core {
+    height: 55px;
+    width: 46px;
+    border-radius: 50% 50% 50% 50%;
+    /* margin: 0 auto; */
+    background: #000;
+    position: absolute;
+    left: 50%;
+    margin-left: -23px;
+    transition: all .6s ease-in
+}
+.eye-bottom {
+    height: 50px;
+    width: 100px;
+    border-radius: 40% 40% 50% 50%;
+    position: absolute;
+    margin-top: 48px;
+    border-top: 2px solid #46240b;
+    background: #f6f7f2;
+    transition: all .6s ease-in
+}
+.face-red {
+    position: absolute;
+    height: 20px;
+    width: 70px;
+    background: red;
+    top: 45px;
+    /* top: 64px; */
+    left: 18px;
+    border-radius: 50% 50% 50% 50%;
+    background: #e85a5e;
+    opacity: 0.0;
+    transition: all .6s ease-in
+}
+.ear-wrap {
+    position: absolute;
+    left: 50%;
+    width: 300px;
+    margin-left: -150px;
+    margin-top: 28px;
+    transition: all .6s ease-in
+}
+.ear {
+    position: absolute;
+    width: 80px;
+    height: 100px;
+    border: 2px solid #000;
+    background: #fbf8f1;
+    border-radius: 100% 10% 50% 0%;
+    transition: all .6s ease-in
+}
+.ear-wrap .right {
+    left: auto;
+    right: 0;
+    border-radius: 10% 100% 0% 50%;
+    background: #f1ac2b;
+    transition: all .6s ease-in
+}
+.translate-top {
+    transform: translate(0, -20px);
+    transition: all .6s ease-in
+}
+.opac {
+    opacity: .6;
+    transition: all .6s ease-in
+}
+.rolateleft {
+    /* transform-origin: 50% 100%; */
+    transform: rotate(-30deg);
+    transition: all .6s ease-in
+}
+.rolateright {
+    /* transform-origin: 0% 100%; */
+    transform: rotate(30deg);
+    transition: all .6s ease-in
+}
+.scale {
+    transform: scaleX(.8);
+    transition: all .6s ease-in
+}
+.mscalel {
+    /* transform: scaleX(1.5); */
+    /* border-left: 2px solid #000;
+    border-bottom-left-radius: 50%; */
+    border-radius: 0% 40% 50% 50%;
+    transition: all .6s ease-in
+}
+.mscaler {
+    /* transform: scaleX(1.5); */
+    /* border-right: 2px solid #000 !important;
+    border-bottom-right-radius: 50% !important; */
+    border-radius: 40% 0% 50% 50% !important;
+    transition: all .6s ease-in
+}
