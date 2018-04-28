@@ -1,0 +1,49 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    perspective: 1000px;
+}
+
+.container {
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.box {
+    /* background: #fff; */
+    width: 250px;
+    height: 350px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+.card {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	/* border-radius: 20px; */
+}
+.front {
+	background-image: url('../img/正面.jpg');
+  	/* background-position: -24px -23px; */
+}
+.back {
+	transform: rotateY(180deg);
+	background-image: url('../img/反面.jpg');
+  	/* background-position: -287px -23px; */
+}
+.change {
+	transform: rotateY(180deg);
+}
+.box:hover {
+	transform: rotateY(180deg);
+}
