@@ -80,8 +80,9 @@ body, html {
     text-align: center;
     background: rgb(247, 246, 246);
     font-size: 9px;
-    margin-top: 65px;
-    margin-left: 40px;
+    margin-top: 45px;
+    margin-left: 30px;
+    transform: translate(10px , 20px)
 }
 .model5 {
     display: inline-block;
@@ -92,7 +93,7 @@ body, html {
     text-align: center;
     background: rgb(247, 246, 246);
     font-size: 9px;
-    margin-top: 65px;
-    margin-left: 40px;
-    transform: skew(30deg) scaleX(0.5) rotate(45deg);
+    margin-top: 45px;
+    margin-left: 30px;
+    transform: skew(30deg) scaleX(0.5) rotate(45deg) translate(10px , 20px)
 }
