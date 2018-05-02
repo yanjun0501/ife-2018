@@ -17,6 +17,8 @@
   "author": "yanjun",
   "license": "ISC",
   "devDependencies": {
+    "art-template": "4.12.2",
+    "art-template-loader": "1.4.3",
     "autoprefixer": "^8.3.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
