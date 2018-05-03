@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="ani">
+
+    </div>
+</body>
+
+<!-- <script src="./js/bodymovin.js"></script> -->
+<script src="./js/lottie.js"></script>
+<!-- <script src="./js/index.js"></script> -->
+<script>
+var stage = document.getElementsByClassName('ani')[0];
+lottie.loadAnimation({
+	container: stage,   //包含动画的DOM元素
+	renderer: 'svg',  
+	loop: true, 
+	autoplay: true, 
+	path: './json/data.json',   //动画的路径
+})
+</script>
+</html>
