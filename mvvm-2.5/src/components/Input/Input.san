@@ -1,0 +1,88 @@
+<template>
+<div>
+  <input 
+    class="san-input"
+    value="{= value =}" 
+    placeholder="{= placeholder =}" 
+    disabled="{= disabled =}"
+    readonly="{= readonly =}"
+    on-input="handleInput($event)"
+    on-focus="handleFocus($event)"
+    on-blur="handleBlur($event)"
+  />
+</div>
+</template>
+
+<script>
+
+import san, {DataTypes} from 'san';
+
+export default {
+
+  components: {
+  },
+  messages: {
+
+  },
+  initData() {
+    return {
+      value: '',
+      placeholder: '',
+      disabled: '',
+      readonly: ''
+    };
+  },
+  dataTypes: {
+  },
+  filters: {
+    // dataFormat: function (value) {
+    //   if ( value === 0) {
+    //     return ''
+    //   }
+    //   else 
+    //     return value
+    // }
+  },
+  computed: {
+    todo() {
+
+      return {
+
+      };
+    },
+  },
+  handleInput(e) {
+    this.fire('input', e)
+  },
+  handleFocus(e) {
+    this.fire('focus', e)
+  },
+  handleBlur(e) {
+    this.fire('blur', e)
+  },
+  created() {
+  },
+  disposed() {
+  }
+}
+
+</script>
+
+<style scoped>
+.san-input {
+  width: 230px;
+  height: 25px;
+  font-size: 12px;
+  padding: 8px;
+}
+.san-input:focus {
+  outline: 0;
+  border-color: rgba(0,0,0,.25) !important;
+}
+.san-input:hover {
+  border-color: rgba(0,0,0,.45);
+}
+.san-input:disabled {
+  background: rgba(0,0,0,.15)
+}
+</style>
