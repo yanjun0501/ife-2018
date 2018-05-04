@@ -1,13 +1,12 @@
 <template>
 <div class="box">
-  <div s-for="item in data">
-    <san-task item="{{item}}">
-      <div slot="task" >{{item.task}}</div>
-    </san-task>
-  </div>
-
-  <div s-for="item in data">
-    <san-task task="{{item.task}}" item="{{item}}"></san-task>
+  <div class="{{toggle === false ? 'container' : 'container-toggle'}}">
+    <button on-click="toggle">toggle</button>
+    <p>dasndjajnsdhaskhdjkahjkdshjashdjkhas
+    hjkfhjkhdfjhjhhkjhekjqwhjekhqjk
+    whejqhjwehjqwhjekhjqqwneqkwjekljklqwjkeljqkl
+    kjwejkqhwekhqkwjhekhqkjwhehqwhejhqkjwe
+    qehqwjhjehjqwhejkqhjwhekqjwhehjqhwkhekjhqwjk</p>
   </div>
 
 </div>
@@ -16,38 +15,17 @@
 <script>
 
 import san, {DataTypes} from 'san';
-import Task from './components/Task/Task.san'
 
 export default {
 
   components: {
-    'san-task': Task,
   },
   messages: {
 
   },
   initData() {
     return {
-      data: [
-        {
-          task: '任务1',
-          title: '标题1',
-          content: '文本1',
-          date: '日期1'
-        },
-        {
-          task: '任务2',
-          title: '标题2',
-          content: '文本2',
-          date: '日期2'
-        },
-        {
-          task: '任务3',
-          title: '标题3',
-          content: '文本3',
-          date: '日期3'
-        }
-      ]
+      toggle: false
     };
   },
   dataTypes: {
@@ -69,9 +47,26 @@ export default {
       };
     },
   },
+  toggle() {
+    this.data.set('toggle', !this.data.raw.toggle)
+  },
+  compiled() {
+    console.log('组件视图模板编译完成 不太懂这个任务怎么结合上23333 ')
+  },
+  inited() {
+    console.log('组件实例初始化完成 不太懂这个任务怎么结合上23333 ')
+  },
   created() {
+    console.log('组件元素创建完成 不太懂这个任务怎么结合上23333 ')
+  },
+  attached() {
+    console.log('组件已被附加到页面中 不太懂这个任务怎么结合上23333 ')
+  },
+  detached() {
+    console.log('组件从页面中移除 不太懂这个任务怎么结合上23333 ')
   },
   disposed() {
+    console.log('组件卸载完成 不太懂这个任务怎么结合上23333 ')
   }
 }
 
@@ -85,5 +80,19 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
 }
-
+.container {
+  width: 300px;
+  height: 80px;
+  overflow: hidden;
+  border: 1px solid red;
+}
+.container-toggle {
+  width: 300px;
+  height: 600px;
+  overflow: hidden;
+  border: 1px solid red;
+}
+p {
+  margin-top: 100px;
+}
 </style>
