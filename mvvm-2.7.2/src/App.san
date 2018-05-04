@@ -1,59 +1,99 @@
 <template>
 <div>
   <button on-click="toggle">TOGGLE</button>
-  <span s-if="show" s-transition="hook">
-    Transition Layer
+  <span s-if="show" s-transition="hook('shake')">
+    item1
   </span>
+  <span s-else s-transition="hook('shake')">
+    item1
+  </span>
+  <button on-click="toggle1">TOGGLE</button>
+  <span s-if="show1" s-transition="hook('shake1')">
+    item2
+  </span>
+  <span s-else s-transition="hook('shake1')">
+    item2
+  </span>
+  <div class="{{ vis === false ? 'hide' : 'modal'}}">
+    aaaaaa!文档看不懂qaq {{mes}}
+  </div>
 </div>
 </template>
 
 <script>
 import san, {DataTypes} from 'san';
+import {transition} from 'san-transition'
 
 export default {
-  hook: {
-    enter (el, done) {
-      el.classList.toggle('before-enter');
-      setTimeout (() => {
-        el.classList.toggle ('enter');
-      }, 50);
-      // el.classList.toggle ('enter');
-      el.addEventListener ('transitionend', function() {
-        el.classList.toggle ('enter');
-        el.classList.toggle ('before-enter');
-        done();
-
-      })
-    },
-    leave (el, done) {
-      el.classList.toggle ('leave');
-      el.addEventListener ('transitionend', function() {
-        el.classList.toggle ('leave');
-        done();
-      })
-    }
-  },
+  hook: transition,
   initData() {
     return {
-      show: true
+      show: true,
+      show1: true,
+      mes: '',
+      vis: false
     };
   },
   toggle() {
+    this.data.set('mes', 'item1')
     this.data.set('show',!this.data.get('show'));
+    this.data.set('vis', !this.data.raw.vis)
+  },
+  toggle1() {
+    this.data.set('mes', 'item2')
+    this.data.set('show1',!this.data.get('show1'));
+    this.data.set('vis', !this.data.raw.vis)
   }
 }
 </script>
 
 <style>
-.enter, .leave {
+.shake-enter, .shake-leave {
   transition: all .5s;
 }
 
-.before-enter, .leave {
-  opacity: 0;
+.shake-before-enter, .shake-leave {
+  opacity: .1;
 }
 
-.enter, .before-leave {
+.shake-enter, .shake-before-leave {
   opacity: 1;
 }
+.shake1-enter, .shake1-leave {
+  transition: all .5s;
+}
+
+.shake1-before-enter, .shake1-leave {
+  opacity: .1;
+}
+
+.shake1-enter, .shake1-before-leave {
+  opacity: 1;
+}
+.modal {
+  width: 300px;
+  height: 300px;
+  display: block;
+  position: fixed;
+
+
+  z-index: 9999;
+  color: #fff;
+  background: #4199ee;
+}
+.hide {
+  width: 300px;
+  height: 300px;
+  display: none;
+  position: fixed;
+
+
+  z-index: 9999;
+  color: #fff;
+  background: #4199ee;
+}
+@keyframes zoom{  
+    from {transform: scale(0)}  
+    to {transform: scale(1)}  
+}  
 </style>
