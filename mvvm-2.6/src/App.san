@@ -1,0 +1,89 @@
+<template>
+<div class="box">
+  <div s-for="item in data">
+    <san-task item="{{item}}">
+      <div slot="task" >{{item.task}}</div>
+    </san-task>
+  </div>
+
+  <div s-for="item in data">
+    <san-task task="{{item.task}}" item="{{item}}"></san-task>
+  </div>
+
+</div>
+</template>
+
+<script>
+
+import san, {DataTypes} from 'san';
+import Task from './components/Task/Task.san'
+
+export default {
+
+  components: {
+    'san-task': Task,
+  },
+  messages: {
+
+  },
+  initData() {
+    return {
+      data: [
+        {
+          task: '任务1',
+          title: '标题1',
+          content: '文本1',
+          date: '日期1'
+        },
+        {
+          task: '任务2',
+          title: '标题2',
+          content: '文本2',
+          date: '日期2'
+        },
+        {
+          task: '任务3',
+          title: '标题3',
+          content: '文本3',
+          date: '日期3'
+        }
+      ]
+    };
+  },
+  dataTypes: {
+  },
+  filters: {
+    // dataFormat: function (value) {
+    //   if ( value === 0) {
+    //     return ''
+    //   }
+    //   else 
+    //     return value
+    // }
+  },
+  computed: {
+    todo() {
+
+      return {
+
+      };
+    },
+  },
+  created() {
+  },
+  disposed() {
+  }
+}
+
+</script>
+
+<style scoped>
+.box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+</style>

@@ -1,0 +1,60 @@
+<template>
+<div class="box">
+  <span>孙子：</span>
+  <input value="{= svalue =}" />
+  <button on-click="tellFather">告诉爸爸</button>
+</div>
+</template>
+
+<script>
+
+import san, {DataTypes} from 'san';
+import 'san-mui/lib/index.css';
+
+
+export default {
+
+  components: {
+  },
+  initData() {
+    return {
+      svalue: '我是儿子'
+    };
+  },
+  dataTypes: {
+  },
+  filters: {
+    // dataFormat: function (value) {
+    //   if ( value === 0) {
+    //     return ''
+    //   }
+    //   else 
+    //     return value
+    // }
+  },
+  computed: {
+    todo() {
+
+      return {
+
+      };
+    },
+  },
+  tellFather() {
+    this.dispatch('son', this.data.raw.svalue)
+  },
+  created() {
+  },
+  disposed() {
+  }
+}
+
+</script>
+
+<style scoped>
+.box {
+  width: 400px;
+  height: 200px;
+}
+
+</style>

@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
@@ -15,8 +16,9 @@ const config = {
   },
 
   output: {
-    path: path.resolve(__dirname,  '../dist'),
-    filename: '[name].min.js',
+    path: path.resolve(__dirname, '../dist'),
+    filename: path.join('js/[name].[hash:7].js'),
+    chunkFilename: path.join('js/[id].[chunkhash].js'),
     library: '[name]',
     publicPath: '/'
   },
@@ -92,7 +94,8 @@ const config = {
         use: {
           loader: 'url-loader',
           options: {
-            'limit': 40000
+            limit: 40000,
+            name: path.join('img/[name].[hash:7].[ext]')
           }
         }
       },
@@ -100,7 +103,8 @@ const config = {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         query: {
-          limit: 10000 
+          limit: 10000,
+          name: path.join('fonts/[name].[hash:7].[ext]')
         }
       },
       {
@@ -130,7 +134,14 @@ const config = {
     new webpack.HotModuleReplacementPlugin({
     }),
     new CleanWebpackPlugin(['dist']),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new CompressionPlugin({
+      test: /\.(js|css)$/,
+      asset: '[path].gz[query]',
+      cache: true,
+      algorithm: 'gzip',
+      deleteOriginalAssets: false
+    })
     // new UglifyJsPlugin({
     //   test: /\.js($|\?)/i,
     //   sourceMap: true
@@ -146,7 +157,7 @@ const config = {
     hot: true,
     historyApiFallback: true,
     watchOptions: {
-        ignored: /node_modules/
+      ignored: /node_modules/
     }
   }
 };

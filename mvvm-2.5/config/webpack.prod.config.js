@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
@@ -13,32 +14,33 @@ const config = {
     'main': './src/index.js'
   },
   optimization: {
-		splitChunks: {
-			cacheGroups: {
-				commons: {
-					chunks: 'initial',
-					minChunks: 3
-				},
-				vendor: {
-					test: /node_modules[\\/](?!san)/,
-					chunks: 'all',
-					name: 'vendor',
-					priority: 10,
-					enforce: true
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          chunks: 'initial',
+          minChunks: 3
         },
-				san: {
-					test: /[\\/]san/,
-					chunks: 'all',
-					name: 'san',
-					priority: 10,
-					enforce: true
-				}
-			}
-		}
-	},
+        vendor: {
+          test: /node_modules[\\/](?!san)/,
+          chunks: 'all',
+          name: 'vendor',
+          priority: 10,
+          enforce: true
+        },
+        san: {
+          test: /[\\/]san/,
+          chunks: 'all',
+          name: 'san',
+          priority: 10,
+          enforce: true
+        }
+      }
+    }
+  },
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: '[name].min.js',
+    filename: path.join('static/js/[name].[hash:7].js'),
+    chunkFilename: path.join('static/js/[id].[chunkhash].js'),
     library: '[name]',
     publicPath: '/'
   },
@@ -120,7 +122,8 @@ const config = {
         use: {
           loader: 'url-loader',
           options: {
-            'limit': 40000
+            limit: 40000,
+            name: path.join('static/img/[name].[hash:7].[ext]')
           }
         }
       },
@@ -128,7 +131,8 @@ const config = {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         query: {
-          limit: 10000
+          limit: 10000,
+          name: path.join('static/fonts/[name].[hash:7].[ext]')
         }
       },
       {
@@ -150,7 +154,7 @@ const config = {
 
   plugins: [
     new ExtractTextPlugin({
-      filename: '[name].min.css',
+      filename: path.join('static/css/[name].[hash:7].css'),
       allChunks: true
     }),
     // new config.optimization.minimize(),
@@ -165,6 +169,13 @@ const config = {
       hashFunction: 'sha256',
       hashDigest: 'hex',
       hashDigestLength: 20
+    }),
+    new CompressionPlugin({
+      test: /\.(js|css)$/,
+      asset: '[path].gz[query]',
+      cache: true,
+      algorithm: 'gzip',
+      deleteOriginalAssets: false
     })
   ]
 };

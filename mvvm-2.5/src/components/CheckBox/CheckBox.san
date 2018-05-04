@@ -19,7 +19,10 @@
 <script>
 
 import san, {DataTypes} from 'san';
-
+import svg from '../../asserts/1.svg'
+import '../../asserts/正面.jpg'
+import {Dialog, Radio} from 'san-mui';
+import 'san-mui/lib/index.css';
 export default {
 
   components: {
