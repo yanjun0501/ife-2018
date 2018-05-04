@@ -1,89 +1,59 @@
 <template>
-<div class="box">
-  <div s-for="item in data">
-    <san-task item="{{item}}">
-      <div slot="task" >{{item.task}}</div>
-    </san-task>
-  </div>
-
-  <div s-for="item in data">
-    <san-task task="{{item.task}}" item="{{item}}"></san-task>
-  </div>
-
+<div>
+  <button on-click="toggle">TOGGLE</button>
+  <span s-if="show" s-transition="hook">
+    Transition Layer
+  </span>
 </div>
 </template>
 
 <script>
-
 import san, {DataTypes} from 'san';
-import Task from './components/Task/Task.san'
 
 export default {
+  hook: {
+    enter (el, done) {
+      el.classList.toggle('before-enter');
+      setTimeout (() => {
+        el.classList.toggle ('enter');
+      }, 50);
+      // el.classList.toggle ('enter');
+      el.addEventListener ('transitionend', function() {
+        el.classList.toggle ('enter');
+        el.classList.toggle ('before-enter');
+        done();
 
-  components: {
-    'san-task': Task,
-  },
-  messages: {
-
+      })
+    },
+    leave (el, done) {
+      el.classList.toggle ('leave');
+      el.addEventListener ('transitionend', function() {
+        el.classList.toggle ('leave');
+        done();
+      })
+    }
   },
   initData() {
     return {
-      data: [
-        {
-          task: '任务1',
-          title: '标题1',
-          content: '文本1',
-          date: '日期1'
-        },
-        {
-          task: '任务2',
-          title: '标题2',
-          content: '文本2',
-          date: '日期2'
-        },
-        {
-          task: '任务3',
-          title: '标题3',
-          content: '文本3',
-          date: '日期3'
-        }
-      ]
+      show: true
     };
   },
-  dataTypes: {
-  },
-  filters: {
-    // dataFormat: function (value) {
-    //   if ( value === 0) {
-    //     return ''
-    //   }
-    //   else 
-    //     return value
-    // }
-  },
-  computed: {
-    todo() {
-
-      return {
-
-      };
-    },
-  },
-  created() {
-  },
-  disposed() {
+  toggle() {
+    this.data.set('show',!this.data.get('show'));
   }
 }
-
 </script>
 
-<style scoped>
-.box {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+<style>
+.enter, .leave {
+  transition: all .5s;
 }
 
+.before-enter, .leave {
+  opacity: 0;
+}
+
+.enter, .before-leave {
+  opacity: 1;
+}
 </style>
