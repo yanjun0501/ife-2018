@@ -1,0 +1,83 @@
+<template>
+<div class="taskbox">
+  <slot name="task"></slot>
+  {{task}}
+  <san-card data="{{item}}">
+    <p>{{title}}</p>
+    <p>{{content}}</p>
+    <p>{{date}}</p>
+  </san-card>
+</div>
+</template>
+
+<script>
+
+import san, {DataTypes} from 'san';
+import Card from '../Card/Card.san'
+
+export default {
+
+  components: {
+    'san-card': Card
+  },
+  messages: {
+
+  },
+  initData() {
+    return {
+    };
+  },
+  dataTypes: {
+  },
+  filters: {
+    // dataFormat: function (value) {
+    //   if ( value === 0) {
+    //     return ''
+    //   }
+    //   else 
+    //     return value
+    // }
+  },
+  computed: {
+    todo() {
+
+      return {
+
+      };
+    },
+  },
+  handleInput(e) {
+    console.log('input',e.target.value)
+  },
+  handleFocus(e) {
+    console.log('focus',e.target.value)
+  },
+  handleBlur(e) {
+    console.log('blur',e.target.value)
+  },
+  handleChange(e) {
+    console.log('change',e.target.value)
+  },
+  created() {
+  },
+  disposed() {
+  }
+}
+
+</script>
+
+<style scoped>
+.box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.taskbox {
+    width: 200px;
+    height: 150px;
+    border: 1px solid red;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+</style>

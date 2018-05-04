@@ -1,0 +1,59 @@
+<template>
+<div>
+  <button on-click="toggle">TOGGLE</button>
+  <span s-if="show" s-transition="hook">
+    Transition Layer
+  </span>
+</div>
+</template>
+
+<script>
+import san, {DataTypes} from 'san';
+
+export default {
+  hook: {
+    enter (el, done) {
+      el.classList.toggle('before-enter');
+      setTimeout (() => {
+        el.classList.toggle ('enter');
+      }, 50);
+      // el.classList.toggle ('enter');
+      el.addEventListener ('transitionend', function() {
+        el.classList.toggle ('enter');
+        el.classList.toggle ('before-enter');
+        done();
+
+      })
+    },
+    leave (el, done) {
+      el.classList.toggle ('leave');
+      el.addEventListener ('transitionend', function() {
+        el.classList.toggle ('leave');
+        done();
+      })
+    }
+  },
+  initData() {
+    return {
+      show: true
+    };
+  },
+  toggle() {
+    this.data.set('show',!this.data.get('show'));
+  }
+}
+</script>
+
+<style>
+.enter, .leave {
+  transition: all .5s;
+}
+
+.before-enter, .leave {
+  opacity: 0;
+}
+
+.enter, .before-leave {
+  opacity: 1;
+}
+</style>

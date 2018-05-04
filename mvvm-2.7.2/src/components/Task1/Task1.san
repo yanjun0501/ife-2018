@@ -1,0 +1,75 @@
+<template>
+<div>
+  <slot name="title"></slot>
+  {{title}}
+</div>
+</template>
+
+<script>
+
+import san, {DataTypes} from 'san';
+
+export default {
+
+  components: {
+  },
+  messages: {
+
+  },
+  initData() {
+    return {
+      first: true,
+      second: false,
+      value: '123',
+      inputDisabled: false,
+      inputReadonly: true
+    };
+  },
+  dataTypes: {
+  },
+  filters: {
+    // dataFormat: function (value) {
+    //   if ( value === 0) {
+    //     return ''
+    //   }
+    //   else 
+    //     return value
+    // }
+  },
+  computed: {
+    todo() {
+
+      return {
+
+      };
+    },
+  },
+  handleInput(e) {
+    console.log('input',e.target.value)
+  },
+  handleFocus(e) {
+    console.log('focus',e.target.value)
+  },
+  handleBlur(e) {
+    console.log('blur',e.target.value)
+  },
+  handleChange(e) {
+    console.log('change',e.target.value)
+  },
+  created() {
+  },
+  disposed() {
+  }
+}
+
+</script>
+
+<style scoped>
+.box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+</style>
